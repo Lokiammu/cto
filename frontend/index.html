@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#007AFF">
+  <title>Mobile Chatbot UI</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ====================================================================
+         SIGNUP PAGE
+         ==================================================================== -->
+    <div id="signup-page" class="page active">
+      <div class="auth-container">
+        <div class="auth-card">
+          <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Join us and start shopping</p>
+          </div>
+          <form id="signup-form" class="auth-form">
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <input
+                type="text"
+                id="signup-name"
+                name="name"
+                placeholder="Enter your name"
+                required
+              >
+              <span class="form-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-email">Email Address</label>
+              <input
+                type="email"
+                id="signup-email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              >
+              <span class="form-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                placeholder="At least 8 characters"
+                required
+              >
+              <span class="form-error"></span>
+              <div class="password-requirements">
+                <div class="password-requirement invalid" data-requirement="length">
+                  At least 8 characters
+                </div>
+                <div class="password-requirement invalid" data-requirement="uppercase">
+                  One uppercase letter
+                </div>
+                <div class="password-requirement invalid" data-requirement="number">
+                  One number
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-confirm">Confirm Password</label>
+              <input
+                type="password"
+                id="signup-confirm"
+                name="confirm"
+                placeholder="Confirm your password"
+                required
+              >
+              <span class="form-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              Sign Up
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            Already have an account?
+            <a href="#" data-page="signin">Sign In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         SIGNIN PAGE
+         ==================================================================== -->
+    <div id="signin-page" class="page">
+      <div class="auth-container">
+        <div class="auth-card">
+          <div class="auth-header">
+            <h1>Sign In</h1>
+            <p>Welcome back to our store</p>
+          </div>
+          <form id="signin-form" class="auth-form">
+            <div class="form-group">
+              <label for="signin-email">Email Address</label>
+              <input
+                type="email"
+                id="signin-email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              >
+              <span class="form-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signin-password">Password</label>
+              <input
+                type="password"
+                id="signin-password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              >
+              <span class="form-error"></span>
+            </div>
+
+            <div class="auth-checkbox">
+              <input
+                type="checkbox"
+                id="remember-me"
+                name="remember"
+              >
+              <label for="remember-me" style="margin-bottom: 0;">
+                Remember me
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">
+              Sign In
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            Don't have an account?
+            <a href="#" data-page="signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         CHAT PAGE
+         ==================================================================== -->
+    <div id="chat-page" class="page">
+      <header class="header">
+        <h1 class="header-title">Chat Support</h1>
+        <div class="header-user">
+          <div class="user-avatar" id="user-avatar">JD</div>
+          <span class="user-name" id="user-name">John Doe</span>
+          <button class="btn btn-sm btn-secondary btn-logout">Logout</button>
+        </div>
+      </header>
+
+      <div class="chat-container">
+        <div class="messages-container" id="messages-container"></div>
+
+        <div class="chat-input-container">
+          <div class="chat-input-wrapper">
+            <textarea
+              id="chatInput"
+              class="chat-input"
+              placeholder="Type your message..."
+              rows="1"
+            ></textarea>
+            <button id="sendBtn" class="btn btn-primary chat-btn" title="Send message">
+              ➤
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="cart-toggle" id="cart-toggle" title="Open cart">
+        🛒
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+
+    <!-- ====================================================================
+         PRODUCTS PAGE
+         ==================================================================== -->
+    <div id="products-page" class="page">
+      <header class="header">
+        <h1 class="header-title">Products</h1>
+        <div class="header-user">
+          <div class="user-avatar" id="user-avatar-2">JD</div>
+          <span class="user-name" id="user-name-2">John Doe</span>
+          <button class="btn btn-sm btn-secondary btn-logout">Logout</button>
+        </div>
+      </header>
+
+      <div class="products-container">
+        <div class="products-header">
+          <div class="search-box">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search products..."
+              autocomplete="off"
+            >
+          </div>
+          <select id="sort-select" style="width: 150px;">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+
+        <div class="products-grid" id="products-grid"></div>
+      </div>
+
+      <button class="cart-toggle" id="cart-toggle-2" title="Open cart">
+        🛒
+        <span class="cart-badge" id="cart-badge-2">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       PRODUCT DETAIL MODAL
+       ==================================================================== -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-product-name">Product Name</h2>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <img
+          id="modal-product-image"
+          class="modal-image"
+          src=""
+          alt="Product"
+        >
+
+        <div class="modal-details">
+          <div class="detail-section">
+            <div class="summary-row">
+              <span>Price:</span>
+              <span id="modal-product-price" style="font-weight: 600; color: var(--primary);">$0.00</span>
+            </div>
+            <div class="summary-row" id="modal-rating-row">
+              <span>Rating:</span>
+              <span id="modal-product-rating">★★★★★ (0 reviews)</span>
+            </div>
+            <div class="summary-row" id="modal-stock-row">
+              <span>Stock:</span>
+              <span id="modal-product-stock">In Stock</span>
+            </div>
+          </div>
+
+          <div class="detail-section" id="colors-section">
+            <div class="detail-section-title">Colors</div>
+            <div class="color-options" id="color-options"></div>
+          </div>
+
+          <div class="detail-section" id="sizes-section">
+            <div class="detail-section-title">Sizes</div>
+            <div class="size-options" id="size-options"></div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-section-title">Description</div>
+            <p id="modal-product-description"></p>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-section-title">Reviews</div>
+            <div class="reviews" id="reviews-container"></div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="modal-cancel">
+            Cancel
+          </button>
+          <button class="btn btn-primary btn-lg" id="modal-add-to-cart">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       CART SIDEBAR
+       ==================================================================== -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>Cart</h2>
+      <button class="modal-close" id="cart-close" style="padding: 0;">✕</button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛒</div>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Loyalty Discount:</span>
+          <span id="loyalty-discount">-$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="total">$0.00</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">
+        Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data/mock-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
