@@ -1,0 +1,11 @@
+pymongo
+pydantic
+bcrypt
+pyjwt
+python-dotenv
+fastapi
+uvicorn
+pytest
+httpx
+email-validator
+Faker
